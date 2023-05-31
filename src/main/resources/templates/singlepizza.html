@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Single Pizza</title>
-   
 </head>
 <body>
     <div>
@@ -13,7 +12,21 @@
             <img th:src="${pizza.img}" alt="Pizza Image" />
             <p th:text="${pizza.price}"></p>
         </div>
+        <h2>Offerte speciali:</h2>
+        <ul>
+            <li th:each="offer : ${pizza.specialOffer}">
+                <span th:text="${offer.name}"></span>
+                <!-- 
+                
+                <a th:href="@{/modificaOfferta/{id}(id=${offerta.id})}">Modifica</a>
+                 -->
+            </li>
+        </ul>
         <a href="/">Back to Pizzas</a>
+        <!-- 
+        
+        <a href="/creaNuovaOfferta?pizzaId=${pizza.id}">Crea nuova offerta speciale</a>
+         -->
     </div>
 </body>
 </html>

@@ -57,6 +57,7 @@ public class ControllerPizza {
             return "error";
         }
         
+        
         model.addAttribute("pizza", pizza);
         
         return "singlepizza";
@@ -73,7 +74,7 @@ public class ControllerPizza {
 		
 	}
 	
-	
+	//store pizza
 	@PostMapping("pizzas/create")
 	public String storePizza(Model model, @Valid @ModelAttribute Pizza pizza, BindingResult bindingResult) {
 		

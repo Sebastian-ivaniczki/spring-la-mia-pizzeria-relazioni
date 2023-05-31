@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import group.java.demo.entity.Pizza;
 import group.java.demo.repository.PizzaRepo;
 
+
 @Service
 public class PizzaService {
 
@@ -20,6 +21,9 @@ public class PizzaService {
 	public List<Pizza> findAll(){
 		return pizzaRepo.findAll();
 	}
+	
+	
+	
 	
 	public Pizza save(Pizza pizza) {
 		
@@ -42,4 +46,6 @@ public class PizzaService {
    public void deltPizza (Pizza pizza) {
 	   pizzaRepo.delete(pizza);
    }
+   
+  
 }
