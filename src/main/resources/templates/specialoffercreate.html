@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Modifica Offerta Speciale</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
 </head>
-<body>
-    <div>
-        <h1>Modifica Offerta Speciale</h1>
-        <form th:action="@{/updateOffer/{id}(id=${specialOffer.id})}" method="post" th:object="${specialOffer}">
-           
-            
-            <div>
+<body th:object="${specialOffer}">
+    <h1>Adds Pizza's</h1>
+    <form method="POST">
+		 <div>
                 <label for="start">Data di inizio:</label>
                 <input type="date" id="start" th:field="*{start}" />
             </div>
@@ -29,9 +27,9 @@
                 <input type="number" id="perc" th:field="*{perc}"  />
             </div>
             
-            <input type="submit" value="UPDATE">
-        </form>
-       
-    </div>
+            
+		<input type="submit" value="CREATE">
+	</form>
+    
 </body>
 </html>

@@ -13,6 +13,7 @@
     <input type="submit">
     </form>
     <a th:href="@{/pizzas/create}">Add pizza</a>
+    <a th:href="@{/createSpecialOffer}">Add special offer</a>
     <ul>
         <li th:each="pizza : ${pizzas}">
             <a th:href="@{/pizzas/{id}(id=${pizza.id})}" th:text="${pizza.name}"></a>

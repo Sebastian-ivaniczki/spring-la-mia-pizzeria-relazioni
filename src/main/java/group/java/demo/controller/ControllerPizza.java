@@ -161,5 +161,19 @@ public class ControllerPizza {
 		
 		return "redirect:/";
 	}
+	
+	//create
+	
+	@GetMapping("/createSpecialOffer")
+	public String createSpecialOffer(Model model) {
+		model.addAttribute("specialOffer", new SpecialOffer());
+		return "specialoffercreate";
+	}
 
+		//store the new offer
+	@PostMapping("/createSpecialOffer")
+	public String storeSpecialOffer(Model model, @ModelAttribute SpecialOffer specialOffer) {
+		specialOfferService.save(specialOffer);
+		return "redirect:/";
+	}
 }
