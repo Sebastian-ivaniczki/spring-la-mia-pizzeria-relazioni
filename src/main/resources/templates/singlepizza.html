@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Single Pizza</title>
+   
+</head>
+<body>
+    <div>
+        <h1>Single Pizza</h1>
+        <div>
+            <h3 th:text="${pizza.name}"></h3>
+            <p th:text="${pizza.description}"></p>
+            <img th:src="${pizza.img}" alt="Pizza Image" />
+            <p th:text="${pizza.price}"></p>
+        </div>
+        <a href="/">Back to Pizzas</a>
+    </div>
+</body>
+</html>

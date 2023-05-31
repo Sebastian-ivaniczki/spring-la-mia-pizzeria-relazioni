@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <h1>Pizza's</h1>
+    
+    <form th:action="@{/pizzas/by/name}" method="POST">
+    <label id="name">Search</label>
+    <input id="name" type="text" name="name" th:value="${name}">
+    <input type="submit">
+    </form>
+    <a th:href="@{/pizzas/create}">Add pizza</a>
+    <ul>
+        <li th:each="pizza : ${pizzas}">
+            <a th:href="@{/pizzas/{id}(id=${pizza.id})}" th:text="${pizza.name}"></a>
+            <a th:href="@{/pizza/update/{id} (id=${pizza.id})}">Update</a> - 
+            <a th:href="@{/pizza/delete/{id} (id=${pizza.id})}">Delete</a>
+        </li>
+    </ul>
+</body>
+</html>
