@@ -16,10 +16,10 @@
         <ul>
             <li th:each="offer : ${pizza.specialOffer}">
                 <span th:text="${offer.name}"></span>
-                <!-- 
+               
                 
-                <a th:href="@{/modificaOfferta/{id}(id=${offerta.id})}">Modifica</a>
-                 -->
+                <a th:href="@{/updateOffer/{id}(id=${offer.id})}">Modifica</a>
+                
             </li>
         </ul>
         <a href="/">Back to Pizzas</a>

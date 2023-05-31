@@ -15,7 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import group.java.demo.entity.Pizza;
+import group.java.demo.entity.SpecialOffer;
 import group.java.demo.service.PizzaService;
+import group.java.demo.service.SpecialOfferServ;
 import jakarta.validation.Valid;
 
 @Controller
@@ -27,6 +29,9 @@ public class ControllerPizza {
 	
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private SpecialOfferServ specialOfferService;
 	
 	@GetMapping("/")
 	public String getHome(Model model) {
@@ -133,5 +138,28 @@ public class ControllerPizza {
 		return "redirect:/";
 	}
 	
+	//Special offer part
+	
+	//update
+	@GetMapping("/updateOffer/{id}")
+	public String editSpecialOffer(@PathVariable("id") Integer id, Model model) {
+		Optional<SpecialOffer> optSpecialOffer = specialOfferService.findById(id);
+		SpecialOffer specialOffer = optSpecialOffer.orElse(null);
+		if (specialOffer == null) {
+			return "error";
+		}
+		
+		model.addAttribute("specialOffer", specialOffer);
+		
+		return "updatespecialoffer";
+	}
+	
+	@PostMapping("/updateOffer/{id}")
+	public String updateSpecialOffer(@PathVariable("id") Integer id,
+			@ModelAttribute("specialOffer") SpecialOffer specialOffer) {
+		specialOfferService.save(specialOffer);
+		
+		return "redirect:/";
+	}
 
 }
