@@ -21,5 +21,13 @@
             <a th:href="@{/pizza/delete/{id} (id=${pizza.id})}">Delete</a>
         </li>
     </ul>
+    
+    <h1>Ingredients</h1>
+    <br/>
+    <ul>
+    	<li th:each="ingredient : ${ingredients}">
+    		<span th:text="${ingredient.name}"></span>
+    	</li>
+    </ul>
 </body>
 </html>

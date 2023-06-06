@@ -7,8 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import group.java.demo.entity.Ingredient;
 import group.java.demo.entity.Pizza;
 import group.java.demo.entity.SpecialOffer;
+import group.java.demo.service.IngredientService;
 import group.java.demo.service.PizzaService;
 import group.java.demo.service.SpecialOfferServ;
 
@@ -27,6 +29,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	@Autowired
 	private SpecialOfferServ specialsev;
 	
+	@Autowired
+	private IngredientService ingredientService;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		//Offer
@@ -37,6 +42,16 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 		specialsev.save(o1);
 		specialsev.save(o2);
 		specialsev.save(o3);
+		
+		//ingredients 
+				Ingredient i = new Ingredient("peperoni");
+				Ingredient i1 = new Ingredient("salsiccia");
+				Ingredient i2 = new Ingredient("salame");
+				Ingredient i3 = new Ingredient("mozzarella");
+				ingredientService.save(i);
+				ingredientService.save(i1);
+				ingredientService.save(i2);
+				ingredientService.save(i3);
 		
 		//Pizza
 		Pizza p = new Pizza("margherita 1", "buona buona" ,"https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg", 5.00f, o1);
@@ -49,6 +64,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 		pizzaService.save(p2);
 		pizzaService.save(p3);
 		pizzaService.save(p4);
+		
+		
+		
 	}
 
 }

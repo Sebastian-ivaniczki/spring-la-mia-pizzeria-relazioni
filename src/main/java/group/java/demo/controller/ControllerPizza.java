@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
+import group.java.demo.entity.Ingredient;
 import group.java.demo.entity.Pizza;
 import group.java.demo.entity.SpecialOffer;
+import group.java.demo.service.IngredientService;
 import group.java.demo.service.PizzaService;
 import group.java.demo.service.SpecialOfferServ;
 import jakarta.validation.Valid;
@@ -33,10 +35,14 @@ public class ControllerPizza {
 	@Autowired
 	private SpecialOfferServ specialOfferService;
 	
+	@Autowired
+	private IngredientService ingredientService;
 	@GetMapping("/")
 	public String getHome(Model model) {
 		List<Pizza> pizzas = pizzaService.findAll();
+		List<Ingredient> ingredients = ingredientService.findAll();
 		
+		model.addAttribute("ingredients", ingredients);
 		model.addAttribute("pizzas", pizzas);
 		
 		return "index";
@@ -68,12 +74,13 @@ public class ControllerPizza {
         return "singlepizza";
     }
 	
-	//create
+	//create pizza
 	
 	@GetMapping("pizzas/create")
 	public String createPizza(Model model) {
-		
+		List<Ingredient> ingredients = ingredientService.findAll();
 		model.addAttribute("pizza", new Pizza());
+		model.addAttribute("ingredients", ingredients);
 		
 		return "create"; 
 		

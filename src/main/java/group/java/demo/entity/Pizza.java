@@ -1,10 +1,14 @@
 package group.java.demo.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -32,6 +36,9 @@ public class Pizza {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private SpecialOffer specialOffer;	
+	
+	@ManyToMany
+	List<Ingredient> ingredients;
 	public Pizza() { }
 	
 	public Pizza(String name, String description, String img, float price) {
@@ -47,6 +54,14 @@ public class Pizza {
 		setImg(img);
 		setPrice(price);
 		setSpecialOffer(specialOffer);
+	}
+	
+	//constructor whit ingredient
+	
+	public Pizza(String name, String description, String img, float price,SpecialOffer specialOffer, Ingredient...ingredients ) {
+		
+		this(name, description, img, price, specialOffer);
+		setIngredients(ingredients);
 	}
 
 	public Integer getId() {
@@ -98,6 +113,28 @@ public class Pizza {
 		this.specialOffer = specialOffer;
 	}
 
+	public List<Ingredient> getIngredient() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredient) {
+		this.ingredients = ingredient;
+	}
+	
+	
+	//add ingredient and remove
+	
+	public void setIngredients(Ingredient[] ingredient) {
+			
+			setIngredients(Arrays.asList(ingredient));
+	}
+	
+	public void removeIngredient(Ingredient ingredient) {
+		
+		ingredients.remove(ingredient);
+		
+	}
+	
 	@Override
 	public String toString() {
 		
